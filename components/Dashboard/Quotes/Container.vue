@@ -110,7 +110,6 @@ async function addQoute(quote: QuoteInsert): Promise<void> {
 }
 
 function editQoute(quote: Quote, index: number): void {
-  console.log('EDITQUOTE QUOTE', quote)
   editingQuote.value = { quote, index }
 }
 
@@ -214,11 +213,11 @@ async function shareQuote(quote: Quote): Promise<void> {
   const fileName = `${new Date().getTime()}.png`
   const file = new File([blob], fileName)
 
-  if (typeof navigator.share !== 'undefined' && navigator.canShare()) {
+  try {
     await navigator.share({
       files: [file],
     })
-  } else {
+  } catch {
     const url = new URL('https://twitter.com/intent/tweet')
     let text = quote.text
 

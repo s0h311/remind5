@@ -25,6 +25,4 @@ export default defineEventHandler(async (event) => {
       nullsFirst: true,
       ascending: true,
     })
-
-  console.log(data)
 })
