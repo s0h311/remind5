@@ -1,7 +1,7 @@
 <template>
   <button
     class="gsi-material-button"
-    @click="signIn"
+    @click="$emit('signInClick')"
   >
     <div class="gsi-material-button-state"></div>
     <div class="gsi-material-button-content-wrapper">
@@ -42,13 +42,7 @@
 </template>
 
 <script setup lang="ts">
-const supabase = useSupabaseClient()
-
-async function signIn(): Promise<void> {
-  await supabase.auth.signInWithOAuth({
-    provider: 'google',
-  })
-}
+defineEmits(['signInClick'])
 </script>
 
 <style scoped>

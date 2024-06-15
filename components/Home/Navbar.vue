@@ -6,13 +6,13 @@
         path: '/#pricing',
       },
     ]"
-    :additional-component="!user ? SignInWithGoogle : undefined"
+    :additional-component="!user ? SignIn : undefined"
     :additional-links="user ? additionalLinks : undefined"
   />
 </template>
 
 <script setup lang="ts">
-import SignInWithGoogle from '../UI/SignInWithGoogle.vue'
+import SignIn from './SignIn.vue'
 import LoginIcon from '../Icon/Login.vue'
 import type { Link } from '../UI/types'
 
