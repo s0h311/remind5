@@ -91,7 +91,7 @@ async function share(): Promise<void> {
   await navigator.share({
     title: 'Image',
     text: 'text',
-    files: [new File([blob], 'image')],
+    files: [new File([blob], 'image.png')],
   })
 }
 
