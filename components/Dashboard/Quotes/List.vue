@@ -3,8 +3,6 @@
     ref="rootList"
     class="rounded-lg border px-6 py-5 text-sm"
   >
-    <button @click="share">SHARE</button>
-
     <div class="row mb-5 grid items-center gap-5 font-semibold text-base-content/60">
       <div>Quote</div>
       <div>Book</div>
@@ -39,7 +37,7 @@
             small
             outline
             accent
-            @handle-click="$emit('editQuote', quote, index)"
+            @handle-click="$emit('shareQuote', quote)"
           >
             <IconShare xs />
           </UICta>
@@ -78,25 +76,13 @@ const props = defineProps<{
 defineEmits<{
   editQuote: [Quote, number]
   deleteQuote: [Quote['id'], number]
+  shareQuote: [Quote]
 }>()
 
-const { png } = useHtmlToImage()
-const rootList = ref<HTMLDivElement>()
-
-async function share(): Promise<void> {
-  const dataUrl = await png(rootList.value!)
-
-  const blob = await (await fetch(dataUrl)).blob()
-
-  await navigator.share({
-    title: 'Image',
-    text: 'text',
-    files: [new File([blob], 'image.png')],
-  })
-}
-
 function getBookName(bookId: Book['id'] | null): Book['name'] | null {
-  if (!bookId) return null
+  if (!bookId) {
+    return null
+  }
 
   return props.books.find((b) => b.id === bookId)!.name
 }

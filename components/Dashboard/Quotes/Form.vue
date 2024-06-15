@@ -71,8 +71,6 @@ const emits = defineEmits<{
 watch(props, (newValue, _) => {
   const editingQuote = newValue.editingQuote
 
-  console.log('editingQuote', editingQuote)
-
   if (editingQuote) {
     fields.text = editingQuote.text
     fields.book = editingQuote.book
@@ -119,7 +117,11 @@ function next(): void {
   if (currentStep.value == 2) {
     currentStep.value = -1
 
-    emits('addQuote', { ...fields })
+    emits('addQuote', {
+      text: fields.text,
+      book: fields.book ? fields.book : null,
+      pageNumber: fields.pageNumber ? fields.pageNumber : null,
+    })
 
     resetFields()
   }
