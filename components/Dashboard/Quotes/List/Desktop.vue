@@ -1,8 +1,5 @@
 <template>
-  <div
-    ref="rootList"
-    class="rounded-lg border px-6 py-5 text-sm"
-  >
+  <div class="rounded-lg border px-6 py-5 text-sm">
     <div class="row mb-5 grid items-center gap-5 font-semibold text-base-content/60">
       <div>Quote</div>
       <div>Book</div>

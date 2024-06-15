@@ -1,6 +1,6 @@
 <template>
   <div class="flex h-full flex-col items-center">
-    <DashboardQuotesList
+    <DashboardQuotesListContainer
       class="w-4/5"
       :quotes
       :books

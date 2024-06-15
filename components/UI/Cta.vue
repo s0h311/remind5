@@ -1,6 +1,6 @@
 <template>
   <button
-    class="btn"
+    class="btn ring-neutral-content active:ring-2"
     :class="[
       {
         'btn-wide': wide,
