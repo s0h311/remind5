@@ -1,0 +1,28 @@
+<template>
+  <UINavbarDecider
+    :links="[
+      {
+        title: 'Pricing',
+        path: '/#pricing',
+      },
+    ]"
+    :additional-component="!user ? SignInWithGoogle : undefined"
+    :additional-links="user ? additionalLinks : undefined"
+  />
+</template>
+
+<script setup lang="ts">
+import SignInWithGoogle from '../UI/SignInWithGoogle.vue'
+import LoginIcon from '../Icon/Login.vue'
+import type { Link } from '../UI/types'
+
+const user = useSupabaseUser()
+
+const additionalLinks: Link[] = [
+  {
+    title: 'Dashboard',
+    path: '/dashboard',
+    icon: LoginIcon,
+  },
+]
+</script>

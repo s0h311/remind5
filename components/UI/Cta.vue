@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-type Props = {
+const props = defineProps<{
   primary?: boolean
   secondary?: boolean
   accent?: boolean
@@ -41,14 +41,11 @@ type Props = {
   small?: boolean
   type?: 'submit' | 'button'
   disabled?: boolean
-}
+}>()
 
-type Emits = {
+const emits = defineEmits<{
   handleClick: []
-}
-
-const props = defineProps<Props>()
-const emits = defineEmits<Emits>()
+}>()
 
 const color = computed(() =>
   props.primary

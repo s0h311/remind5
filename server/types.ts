@@ -1,4 +1,4 @@
-import type { Database } from '../supabase/types'
+import type { Database } from './supabase/types'
 
 export type Quote = SnakeToCamelCaseNested<Database['public']['Tables']['quote']['Row']>
 export type Book = SnakeToCamelCaseNested<Database['public']['Tables']['book']['Row']>
@@ -19,3 +19,9 @@ export type SnakeToCamelCaseNested<T> = T extends object
         [K in keyof T as SnakeToCamelCase<K & string>]: SnakeToCamelCaseNested<T[K]>
       }
   : T
+
+export type QuoteInsert = {
+  text: Quote['text']
+  book: Book['name'] | null
+  pageNumber: Quote['pageNumber']
+}

@@ -1,8 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@nuxtjs/supabase"],
+  modules: ['@nuxtjs/supabase', '@nuxt/image'],
   devtools: { enabled: true },
-  css: ["~/app.css"],
+  css: ['~/app.css'],
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -10,6 +10,9 @@ export default defineNuxtConfig({
     },
   },
   supabase: {
-    redirect: false
-  }
-});
+    redirect: false,
+  },
+  image: {
+    format: ['webp', 'avif'],
+  },
+})
