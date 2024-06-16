@@ -221,6 +221,7 @@ export type Database = {
       get_quotes: {
         Args: Record<PropertyKey, never>
         Returns: {
+          quote_id: number
           quote_text: string
           page_number: number
           last_send: string

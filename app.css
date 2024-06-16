@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 html {
+  font-family: Karla, Verdana, Geneva, Tahoma, sans-serif;
   scroll-behavior: smooth;
 }
 

@@ -6,6 +6,7 @@ import { Database } from '~/server/supabase/types'
 import { groupBy } from '~/utils/objectFns'
 
 type EmailQuote = {
+  quoteId: number
   quoteText: string
   pageNumber: number | null
   lastSend: Date | null
@@ -33,6 +34,7 @@ export default defineEventHandler(async (event) => {
 
   const rows: EmailQuote[] = getValidQuotes(
     data.map((r) => ({
+      quoteId: r.quote_id,
       quoteText: r.quote_text,
       pageNumber: r.page_number,
       lastSend: r.last_send ? new Date(r.last_send) : null,
@@ -68,6 +70,16 @@ export default defineEventHandler(async (event) => {
       },
     })
   }
+
+  const quoteIds = rows.map((r) => r.quoteId)
+  const todaysDate = new Date().toUTCString()
+
+  await supabase
+    .from('quote')
+    .update({
+      last_send: todaysDate,
+    })
+    .in('id', quoteIds)
 })
 
 function getValidQuotes(emailQuotes: EmailQuote[]): EmailQuote[] {
