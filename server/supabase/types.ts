@@ -218,13 +218,30 @@ export type Database = {
       }
     }
     Functions: {
-      [_ in never]: never
+      get_quotes: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          quote_text: string
+          page_number: number
+          last_send: string
+          book_name: string
+          email: string
+          name: string
+        }[]
+      }
     }
     Enums: {
       subscription_type: "free" | "pro"
     }
     CompositeTypes: {
-      [_ in never]: never
+      get_quotes: {
+        quote_id: number | null
+        quote_text: string | null
+        page_number: number | null
+        last_send: string | null
+        book_name: string | null
+        user_id: string | null
+      }
     }
   }
 }
