@@ -5,6 +5,10 @@
         title: 'Pricing',
         path: '/#pricing',
       },
+      {
+        title: 'FAQ',
+        path: '/#faq',
+      },
     ]"
     :additional-component="!user ? SignIn : undefined"
     :additional-links="user ? additionalLinks : undefined"

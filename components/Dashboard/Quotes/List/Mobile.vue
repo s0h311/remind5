@@ -1,5 +1,5 @@
 <template>
-  <ul class="no-scrollbar mt-5 max-h-[75svh] overflow-y-auto">
+  <ul class="no-scrollbar mt-5 max-h-[75dvh] overflow-y-auto">
     <li
       class="mb-3 grid gap-5 rounded-lg border px-4 py-5"
       v-for="(quote, index) in quotes"

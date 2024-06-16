@@ -12,7 +12,7 @@
     </div>
 
     <aside
-      class="fixed top-0 z-10 h-screen w-3/5 rounded-r bg-neutral-content p-5 text-neutral duration-300 ease-out"
+      class="fixed top-0 z-10 h-[100dvh] w-3/5 rounded-r bg-neutral-content p-5 text-neutral duration-300 ease-out"
       :class="showSideMenu ? 'left-0' : 'left-[-100%]'"
     >
       <div class="flex flex-col gap-5">

@@ -1,5 +1,5 @@
 <template>
-  <aside class="flex h-screen w-fit flex-col gap-5 border-r p-10">
+  <aside class="flex h-[100dvh] w-fit flex-col gap-5 border-r p-10">
     <div class="mb-5">
       <slot />
     </div>

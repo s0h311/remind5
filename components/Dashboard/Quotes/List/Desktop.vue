@@ -7,7 +7,7 @@
       <div>Actions</div>
     </div>
 
-    <div class="max-h-[70svh] overflow-y-auto">
+    <div class="max-h-[70dvh] overflow-y-auto">
       <div
         class="row grid items-center gap-5 border-t border-neutral-content border-opacity-15 py-2"
         v-for="(quote, index) in quotes"
