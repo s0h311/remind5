@@ -1,6 +1,6 @@
 <template>
   <DashboardQuotesListDesktop
-    class="max-[767px]:hidden"
+    class="w-4/5 max-[767px]:hidden"
     :quotes
     :books
     @share-quote="(q) => $emit('shareQuote', q)"

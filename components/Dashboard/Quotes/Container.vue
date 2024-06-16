@@ -52,7 +52,6 @@ async function addQoute(quote: QuoteInsert): Promise<void> {
   }
 
   const tempBookId = new Date().getTime()
-  const tempQuoteId = new Date().getTime() + 2
 
   quotes.value.push({
     text: quote.text,
@@ -88,7 +87,7 @@ async function addQoute(quote: QuoteInsert): Promise<void> {
     bookId = insertBookData.id
   }
 
-  const currentQuote = quotes.value.find((q) => q.id === tempQuoteId)!
+  const currentQuote = quotes.value.find((q) => q.bookId === tempBookId)!
   currentQuote.bookId = bookId
 
   const { data, error } = await supabase

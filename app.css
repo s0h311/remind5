@@ -7,7 +7,7 @@ html {
 }
 
 h1 {
-  @apply text-4xl font-bold tracking-wider text-[var(--title-color)] tablet:text-4xl desktop:text-5xl;
+  @apply text-4xl font-bold tracking-wider tablet:text-5xl desktop:text-6xl;
 }
 
 h2 {
@@ -15,7 +15,7 @@ h2 {
 }
 
 h3 {
-  @apply text-xl tracking-wide text-[var(--title-color)] tablet:text-3xl;
+  @apply text-xl tracking-wide text-neutral-content/80 tablet:text-3xl;
 }
 
 H4 {
@@ -23,7 +23,7 @@ H4 {
 }
 
 mark {
-  @apply bg-gradient-to-r from-accent to-orange-300 text-base-100;
+  @apply bg-gradient-to-r from-sky-300 to-sky-200 text-base-100;
 }
 
 table {
@@ -50,4 +50,8 @@ a {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.text-gradient {
+  @apply inline-block bg-gradient-to-r bg-clip-text text-transparent;
 }
