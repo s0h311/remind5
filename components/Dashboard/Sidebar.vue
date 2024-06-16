@@ -7,8 +7,8 @@
     <HomeLogo />
   </UISidebar>
 
+  <!--class="tablet:hidden" in UIMobileSidebar > button-->
   <UIMobileSidebar
-    class="tablet:hidden"
     :links="links"
     :bottom-btns="bottomBtns"
   >

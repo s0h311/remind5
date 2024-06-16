@@ -1,6 +1,11 @@
 <template>
   <nav class="grid place-items-center desktop:grid-cols-3">
-    <HomeLogo class="place-self-start" />
+    <NuxtLink
+      class="place-self-start"
+      to="/"
+    >
+      <HomeLogo />
+    </NuxtLink>
 
     <div class="space-x-3 desktop:space-x-7">
       <a

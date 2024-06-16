@@ -8,6 +8,6 @@
       </main>
     </div>
 
-    <!--<HomeFooter class="mt-auto" />-->
+    <HomeFooter class="mt-auto" />
   </div>
 </template>

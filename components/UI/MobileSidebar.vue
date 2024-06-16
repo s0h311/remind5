@@ -1,6 +1,6 @@
 <template>
   <button
-    class="absolute left-5 top-5"
+    class="absolute left-5 top-5 tablet:hidden"
     aria-label="Menu"
     @click="showSideMenu = true"
   >

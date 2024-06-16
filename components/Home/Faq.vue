@@ -4,7 +4,6 @@
     title="Frequently Asked Questions"
     :items
   />
-  <div class="mt-40"></div>
 </template>
 
 <script setup lang="ts">
