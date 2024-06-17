@@ -1,13 +1,22 @@
+type WithGoogleConfig = { redirectPath?: string }
+
 export default function useSignIn(): {
-  withGoogle: () => Promise<void>
+  withGoogle: (config: WithGoogleConfig) => Promise<void>
 } {
   const supabase = useSupabaseClient()
 
-  async function withGoogle(): Promise<void> {
+  async function withGoogle({ redirectPath }: WithGoogleConfig): Promise<void> {
+    let redirectTo =
+      process.env.NODE_ENV === 'development' ? 'http://localhost:3000/dashboard' : 'https://remind5.com/dashboard'
+
+    if (redirectPath !== undefined) {
+      redirectTo += redirectPath
+    }
+
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://remind5.vercel.app',
+        redirectTo,
       },
     })
 

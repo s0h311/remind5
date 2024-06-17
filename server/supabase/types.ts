@@ -84,18 +84,21 @@ export type Database = {
           created_at: string
           id: number
           last_payment: string | null
+          payment_period: Database["public"]["Enums"]["payment_period"]
           type: Database["public"]["Enums"]["subscription_type"]
         }
         Insert: {
           created_at?: string
           id?: number
           last_payment?: string | null
+          payment_period: Database["public"]["Enums"]["payment_period"]
           type: Database["public"]["Enums"]["subscription_type"]
         }
         Update: {
           created_at?: string
           id?: number
           last_payment?: string | null
+          payment_period?: Database["public"]["Enums"]["payment_period"]
           type?: Database["public"]["Enums"]["subscription_type"]
         }
         Relationships: []
@@ -232,7 +235,8 @@ export type Database = {
       }
     }
     Enums: {
-      subscription_type: "free" | "pro"
+      payment_period: "monthly" | "yearly" | "lifetime"
+      subscription_type: "free" | "supporter"
     }
     CompositeTypes: {
       get_quotes: {

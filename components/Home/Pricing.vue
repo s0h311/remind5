@@ -20,25 +20,26 @@ const pricingOptions: (PricingOption & { priceId: string })[] = [
     benefits: ['Continual improvements', '24/7 Customer service', 'Best for all'],
     isPremium: false,
     description: `Nothing to describe. It's free.`,
-    priceId: 'price_1PQNqGBzByKpK824WA1OuCOV',
+    priceId: 'free',
   },
   {
     title: 'Supporter',
     newPrice: 1,
-    paymentPeriod: 'monthly',
-    paymentPeriodText: 'monthly',
+    paymentPeriod: 'lifetime',
+    paymentPeriodText: 'one time',
     benefits: ['Continual improvements', '24/7 Customer service', 'Best for all', 'Supporting the creator'],
     isPremium: true,
     description: `Thank you for your support.`,
-    priceId: 'price_1PQNk3BzByKpK8248oDvzkGT',
+    priceId: 'price_1PSPTTKDXBGuYX0kpVOpSB6t',
   },
 ]
 
 async function handleGoToCheckout(pricingOptionIndex: number): Promise<void> {
-  navigateTo('/signup')
-  return
-
   const pricingOption = pricingOptions[pricingOptionIndex]
+
+  if (pricingOption.priceId === 'free') {
+    navigateTo('/signup')
+  }
 
   const stripeCheckoutUrl: string = await $fetch('/api/stripe/checkout', {
     method: 'post',
