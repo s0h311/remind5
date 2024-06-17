@@ -15,6 +15,7 @@
     text="You will not be able to undo the deletion."
     continue-button-text="Delete permanently"
     @continue-click="handleDeleteAccount"
+    revert
   />
 </template>
 

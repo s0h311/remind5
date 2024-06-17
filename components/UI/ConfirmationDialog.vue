@@ -1,9 +1,9 @@
 <template>
   <dialog
     ref="confirmationDialogRef"
-    class="w-[30%] space-y-5 rounded-lg bg-neutral-content p-4"
+    class="w-[30%] space-y-5 rounded-lg bg-neutral-content p-4 text-neutral"
   >
-    <h2 class="text-neutral">{{ title }}</h2>
+    <h2>{{ title }}</h2>
 
     <p
       v-if="text"

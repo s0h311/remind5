@@ -24,13 +24,20 @@ definePageMeta({
 const confirmationDialog = ref<InstanceType<typeof UIConfirmationDialog>>()
 
 const route = useRoute()
+const router = useRouter()
 const user = useSupabaseUser()
 
 onMounted(() => {
-  const isSupporter = route.query.is_supporter === 'true'
+  const isSupporter = route.query.is_supporter
 
-  if (isSupporter) {
+  if (isSupporter === 'true') {
     confirmationDialog.value?.showModal()
+  }
+
+  const code = route.query.code
+
+  if (code) {
+    router.replace({ query: { isSupporter } })
   }
 })
 
