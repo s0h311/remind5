@@ -24,7 +24,7 @@ const pricingOptions: (PricingOption & { priceId: string })[] = [
   },
   {
     title: 'Supporter',
-    newPrice: 1,
+    newPrice: 10,
     paymentPeriod: 'lifetime',
     paymentPeriodText: 'one time',
     benefits: ['Continual improvements', '24/7 Customer service', 'Best for all', 'Supporting the creator'],
