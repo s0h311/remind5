@@ -14,7 +14,8 @@ import type { PricingOption } from '../UI/Pricing.vue'
 const pricingOptions: (PricingOption & { priceId: string })[] = [
   {
     title: 'Free',
-    newPrice: 'free',
+    newPrice: 'FREE',
+    hasNoFixedPrice: true,
     paymentPeriod: 'lifetime',
     paymentPeriodText: 'forever',
     benefits: ['Continual improvements', '24/7 Customer service', 'Best for all'],
@@ -24,7 +25,8 @@ const pricingOptions: (PricingOption & { priceId: string })[] = [
   },
   {
     title: 'Supporter',
-    newPrice: 10,
+    newPrice: 'Pay what you want',
+    hasNoFixedPrice: true,
     paymentPeriod: 'lifetime',
     paymentPeriodText: 'one time',
     benefits: ['Continual improvements', '24/7 Customer service', 'Best for all', 'Supporting the creator'],
@@ -39,16 +41,9 @@ async function handleGoToCheckout(pricingOptionIndex: number): Promise<void> {
 
   if (pricingOption.priceId === 'free') {
     navigateTo('/signup')
+    return
   }
 
-  const stripeCheckoutUrl: string = await $fetch('/api/stripe/checkout', {
-    method: 'post',
-    body: {
-      priceId: pricingOption.priceId,
-      paymentPeriod: pricingOption.paymentPeriod,
-    },
-  })
-
-  await navigateTo(stripeCheckoutUrl, { external: true })
+  navigateTo('/signup?is_supporter=true')
 }
 </script>

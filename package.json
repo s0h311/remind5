@@ -8,6 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
+    "stripe:webhook": "stripe listen --forward-to localhost:3000/api/stripe/webhook",
     "gen:db:types": "npx supabase gen types typescript --project-id sacobqbezzwowydizqsy > server/supabase/types.ts"
   },
   "dependencies": {

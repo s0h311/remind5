@@ -1,12 +1,15 @@
 <template>
   <aside class="flex h-[100dvh] w-fit flex-col gap-5 border-r p-10">
-    <div class="mb-5">
+    <NuxtLink
+      class="mb-5"
+      to="/"
+    >
       <slot />
-    </div>
+    </NuxtLink>
 
     <NuxtLink
       v-for="{ title, path } in links"
-      :key="path"
+      :key="'desktop-sidebar-link-' + path"
       class="rounded-lg px-3 py-2"
       :class="route.path === path ? 'text-natural-content bg-neutral' : 'hover:bg-neutral-content hover:text-neutral'"
       :to="path"
@@ -20,7 +23,7 @@
     >
       <NuxtLink
         v-for="{ title, path } in bottomLinks"
-        :key="path"
+        :key="'desktop-sidebar-bottomlink-' + path"
         class="rounded-lg px-3 py-2"
         :class="route.path === path ? 'text-natural-content bg-neutral' : 'hover:bg-neutral-content hover:text-neutral'"
         :to="path"
@@ -30,7 +33,7 @@
 
       <button
         v-for="(btn, btnIndex) in bottomBtns"
-        :key="'btn' + btnIndex"
+        :key="'desktop-sidebar-btn-' + btnIndex"
         class="rounded-lg px-3 py-2 hover:bg-neutral-content hover:text-neutral"
         @click="btn.handleFn"
       >

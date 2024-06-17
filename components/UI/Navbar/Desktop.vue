@@ -11,7 +11,7 @@
       <a
         class="hover:underline"
         v-for="link in links"
-        :key="link.path"
+        :key="'desktop-link-' + link.path"
         @click="trackAndNavigate(link.title, link.path)"
       >
         {{ link.title }}
@@ -19,13 +19,13 @@
     </div>
 
     <div
-      v-if="additionalLinks"
+      v-if="additionalLinks && additionalLinks.length > 0"
       class="space-x-3 justify-self-end"
     >
       <a
         class="flex items-center gap-2 hover:underline"
         v-for="additionalLink in additionalLinks"
-        :key="additionalLink.path"
+        :key="'desktop-link-' + additionalLink.path"
         @click="trackAndNavigate(additionalLink.title, additionalLink.path)"
       >
         <component

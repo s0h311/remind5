@@ -1,4 +1,11 @@
-<template>ACCOUNT</template>
+<template>
+  <section class="flex w-fit gap-10">
+    <div>
+      <DashboardAccountSubscriptionOverview />
+      <DashboardAccountDeleteForm />
+    </div>
+  </section>
+</template>
 
 <script setup lang="ts">
 useSeoMeta({
@@ -10,3 +17,9 @@ definePageMeta({
   middleware: ['auth'],
 })
 </script>
+
+<style scoped>
+section div div {
+  @apply space-y-7 rounded-lg bg-base-200 px-4 py-3 first:mb-10;
+}
+</style>

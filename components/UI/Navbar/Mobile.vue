@@ -24,10 +24,10 @@
         </button>
 
         <a
-          v-if="additionalLinks"
+          v-if="additionalLinks && additionalLinks.length > 0"
           v-for="{ path, title, icon } in additionalLinks"
+          :key="'mobile-link-' + path"
           class="flex items-center gap-2"
-          :key="path"
           @click="trackAndNavigate(title, path)"
         >
           <component
@@ -46,8 +46,8 @@
 
         <a
           v-for="{ path, title } in links"
+          :key="'mobile-link-' + path"
           class="cursor-pointer"
-          :key="path"
           @click="
             () => {
               showSideMenu = false

@@ -1,7 +1,6 @@
 <template>
   <div class="flex h-full flex-col items-center">
     <DashboardQuotesListContainer
-      class="w-4/5"
       :quotes
       :books
       @edit-quote="editQoute"

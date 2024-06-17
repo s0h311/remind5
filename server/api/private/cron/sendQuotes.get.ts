@@ -3,6 +3,7 @@ import { differenceInDays } from 'date-fns'
 import { objectToCamel } from 'ts-case-convert'
 import { sendMail } from '~/server/mail/mailClient'
 import { Database } from '~/server/supabase/types'
+import logger from '~/utils/logger'
 import { groupBy } from '~/utils/objectFns'
 
 type EmailQuote = {
@@ -28,7 +29,7 @@ export default defineEventHandler(async (event) => {
   const { data, error } = await supabase.rpc('get_quotes').select()
 
   if (error) {
-    console.log(error)
+    logger.error(JSON.stringify(error), 'SendQoutesTask')
     return
   }
 

@@ -32,19 +32,13 @@ export default class StripeWebhookService {
     const event = this.getVerifiedEvent(rawEvent, stripeSignatureHeader)
 
     if (event.type === 'checkout.session.completed') {
-      if (event.data.object.customer_details === null) {
-        throw logger.error('Unable to update last payment, no customer details found', 'StripeWebhookService', true, {
-          event,
-        })
-      }
+      const sessionId = event.data.object.id
 
-      if (event.data.object.customer === null) {
-        throw logger.error('Unable to update last payment, no customer found', 'StripeWebhookService', true, {
-          event,
-        })
-      }
+      const hasUserId = await this.cache.hasItem(sessionId)
 
-      const site = await this.createUser(event.data.object.customer_details, event.data.object.customer.toString())
+      if (!hasUserId) {
+        return { received: true }
+      }
 
       const metadata = event.data.object.metadata
 
@@ -52,15 +46,19 @@ export default class StripeWebhookService {
         throw logger.error('Unable to update last payment, no metadata found', 'StripeWebhookService', true, { event })
       }
 
+      const userId = (await this.cache.getItem(sessionId)) as string
+
       const { paymentPeriod, subscriptionType } = metadata
 
       await this.subscriptionDataService.create(
-        site.id,
+        userId,
         paymentPeriod as Subscription['paymentPeriod'],
         subscriptionType as Subscription['type']
       )
 
-      const email = event.data.object.customer_details.email
+      await this.cache.removeItem(sessionId)
+
+      const email = event.data.object.customer_details?.email
 
       if (!email) {
         throw logger.error('Unable to update last payment, email is null', 'StripeWebhookService', true, { email })
@@ -69,7 +67,7 @@ export default class StripeWebhookService {
       const hasEmail = await this.cache.hasItem(email)
 
       if (hasEmail) {
-        await this.subscriptionDataService.updateLastPayment(site.id, new Date())
+        await this.subscriptionDataService.updateLastPayment(userId, new Date())
         await this.cache.removeItem(email)
       }
     } else if (event.type === 'charge.succeeded') {

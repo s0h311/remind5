@@ -7,7 +7,7 @@ useSeoMeta({
 
 definePageMeta({
   middleware: [
-    async (to, from) => {
+    async (to, _) => {
       const user = useSupabaseUser()
       const { withGoogle } = useSignIn()
 
@@ -15,8 +15,8 @@ definePageMeta({
         return navigateTo('/dashboard')
       }
 
-      const sessionId = to.query.session_id
-      const redirectPath = sessionId ? `?session_id=${sessionId}` : ''
+      const isSupporter = to.query.is_supporter
+      const redirectPath = isSupporter ? `?is_supporter=${isSupporter}` : ''
 
       await withGoogle({ redirectPath })
     },

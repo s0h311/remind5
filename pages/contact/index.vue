@@ -1,9 +1,9 @@
 <template>
   <NuxtLink
     class="btn btn-primary"
-    to="mailto:soheil@reffect.org"
+    to="mailto:support@reffect.org"
   >
-    Contact me at soheil@reffect.org
+    Contact us at support@reffect.org
   </NuxtLink>
 </template>
 

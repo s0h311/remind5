@@ -23,9 +23,25 @@
           </p>
 
           <div class="flex items-center gap-2">
-            <p class="text-3xl font-semibold">{{ option.newPrice === 'free' ? 'FREE' : '$' + option.newPrice }}</p>
+            <p
+              v-if="option.hasNoFixedPrice"
+              class="text-3xl font-semibold"
+            >
+              {{ option.newPrice }}
+            </p>
+            <p
+              v-else
+              class="text-3xl font-semibold"
+            >
+              {{ '$' + option.newPrice }}
+            </p>
 
-            <p class="text-sm">/ {{ option.paymentPeriodText }}</p>
+            <p
+              v-if="!option.hasNoFixedPrice"
+              class="text-sm"
+            >
+              / {{ option.paymentPeriodText }}
+            </p>
           </div>
         </div>
 
@@ -69,6 +85,7 @@ export type PricingOption = {
   benefits: string[]
   isPremium: boolean
   description?: string
+  hasNoFixedPrice?: boolean
 }
 
 type Props = {

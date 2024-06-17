@@ -19,14 +19,17 @@
         />
       </button>
 
-      <div class="mb-5">
+      <NuxtLink
+        class="mb-5"
+        to="/"
+      >
         <slot />
-      </div>
+      </NuxtLink>
 
       <a
         v-for="{ path, title } in links"
         class="cursor-pointer"
-        :key="path"
+        :key="'mobile-sidebar-link-' + path"
         @click="
           () => {
             showSideMenu = false
@@ -43,7 +46,7 @@
       >
         <button
           v-for="(btn, btnIndex) in bottomBtns"
-          :key="'btn' + btnIndex"
+          :key="'mobile-btn' + btnIndex"
           @click="btn.handleFn"
         >
           {{ btn.title }}

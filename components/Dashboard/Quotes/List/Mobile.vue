@@ -52,6 +52,8 @@
         </UICta>
       </div>
     </li>
+
+    <p v-if="quotes.length === 0">Try adding a quote 👇</p>
   </ul>
 </template>
 

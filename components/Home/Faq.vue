@@ -20,11 +20,12 @@ const items = [
   {
     title: 'How do I sign up?',
     content:
-      'If you have a Google account, you just need to sign in. If you want me to add more sign up methods. Let me know: soheil@reffect.org',
+      'If you have a Google account, you just need to sign in. If you want me to add more sign up methods. Let us know: support@reffect.org',
   },
   {
     title: 'Can I make feature requests?',
-    content: 'Yes. Your feedback is valuable. Just right me an email: soheil@reffect.org. I will get back on you ASAP',
+    content:
+      'Yes. Your feedback is valuable. Just right us an email: support@reffect.org. We will get back on you ASAP',
   },
   {
     title: 'Is Remind5 free?',

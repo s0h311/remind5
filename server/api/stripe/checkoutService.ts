@@ -10,6 +10,7 @@ type StripeCheckoutQuery = {
     paymentPeriod: 'monthly' | 'yearly' | 'lifetime'
     isAddressRequired?: boolean
     allowPromotionCodes?: boolean
+    additionalData: Record<string, string>
   }
 }
 
@@ -34,12 +35,18 @@ export default class StripeCheckoutService {
   }
 
   public async execute(query: StripeCheckoutQuery): Promise<string> {
-    const { priceId, paymentPeriod, isAddressRequired = false, allowPromotionCodes = false } = query.checkoutOptions
+    const {
+      priceId,
+      paymentPeriod,
+      isAddressRequired = false,
+      allowPromotionCodes = false,
+      additionalData,
+    } = query.checkoutOptions
     const { isMetered, subscriptionType } = this.subscriptionDetails[priceId]
 
     const mode = this.modes[paymentPeriod]
 
-    const successUrl = query.requestOrigin + '/signup?session_id={CHECKOUT_SESSION_ID}'
+    const successUrl = query.requestOrigin + '/dashboard'
     const cancelUrl = query.requestOrigin
 
     try {
@@ -77,7 +84,9 @@ export default class StripeCheckoutService {
         throw logger.error('Unable to find stripe session url', 'StripeCheckoutService', true)
       }
 
-      this.cache.setItem(session.id, subscriptionType)
+      if ('userId' in additionalData && additionalData.userId) {
+        await this.cache.setItem(session.id, additionalData.userId)
+      }
 
       return session.url
     } catch (e) {
