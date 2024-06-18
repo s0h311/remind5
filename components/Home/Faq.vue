@@ -15,12 +15,12 @@ const items = [
   },
   {
     title: 'Can I change the frequency and the number of quotes?',
-    content: "Currently this is not possible. But I'm working on it, it will be possible very soon.",
+    content: 'Currently this is not possible. But we are working on it, it will be possible very soon.',
   },
   {
     title: 'How do I sign up?',
     content:
-      'If you have a Google account, you just need to sign in. If you want me to add more sign up methods. Let us know: support@reffect.org',
+      'If you have a Google account, you just need to sign in. If you want us to add more sign up methods. Let us know: support@reffect.org',
   },
   {
     title: 'Can I make feature requests?',
@@ -28,7 +28,7 @@ const items = [
   },
   {
     title: 'Is Remind5 free?',
-    content: 'Yes it is completely free :) You can become a supporter for $1 monthly.',
+    content: 'Yes it is completely free :) You can become a supporter starting from $1 monthly.',
   },
 ]
 </script>
