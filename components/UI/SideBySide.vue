@@ -8,14 +8,15 @@
 
       <h3 v-html="text" />
 
-      <a
-        id="hero-cta"
+      <TrackedLink
         v-if="cta"
         class="btn btn-primary w-fit"
-        @click="trackAndNavigate(cta.title, cta.path)"
+        component-name="Hero"
+        :tracking-name="cta.title"
+        :to="cta.path"
       >
         {{ cta.title }}
-      </a>
+      </TrackedLink>
     </div>
 
     <div
@@ -41,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-type Props = {
+defineProps<{
   title: string
   text: string
   gains?: string[]
@@ -50,9 +51,5 @@ type Props = {
     path: string
   }
   customContent?: unknown[]
-}
-
-defineProps<Props>()
-
-const { trackAndNavigate } = useTracking('Hero')
+}>()
 </script>

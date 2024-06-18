@@ -8,25 +8,29 @@
     </NuxtLink>
 
     <div class="space-x-3 desktop:space-x-7">
-      <a
-        class="hover:underline"
+      <TrackedLink
         v-for="link in links"
+        class="hover:underline"
         :key="'desktop-link-' + link.path"
-        @click="trackAndNavigate(link.title, link.path)"
+        component-name="Desktop Navbar"
+        :tracking-name="link.title"
+        :to="link.path"
       >
         {{ link.title }}
-      </a>
+      </TrackedLink>
     </div>
 
     <div
       v-if="additionalLinks && additionalLinks.length > 0"
       class="space-x-3 justify-self-end"
     >
-      <a
-        class="flex items-center gap-2 hover:underline"
+      <TrackedLink
         v-for="additionalLink in additionalLinks"
+        class="flex items-center gap-2 hover:underline"
         :key="'desktop-link-' + additionalLink.path"
-        @click="trackAndNavigate(additionalLink.title, additionalLink.path)"
+        component-name="Desktop Navbar"
+        :tracking-name="additionalLink.title"
+        :to="additionalLink.path"
       >
         <component
           v-if="additionalLink.icon"
@@ -34,7 +38,7 @@
         />
 
         {{ additionalLink.title }}
-      </a>
+      </TrackedLink>
     </div>
 
     <div
@@ -54,8 +58,6 @@ defineProps<{
   additionalLinks?: Link[]
   additionalComponent?: Component
 }>()
-
-const { trackAndNavigate } = useTracking('Desktop Navbar')
 </script>
 
 <style scoped>

@@ -2,6 +2,13 @@
 export default defineNuxtConfig({
   modules: ['@nuxtjs/supabase', '@nuxt/image', '@nuxtjs/google-fonts', '@nuxtjs/sitemap'],
   devtools: { enabled: true },
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'en',
+      },
+    },
+  },
   css: ['~/app.css'],
   postcss: {
     plugins: {
@@ -35,4 +42,14 @@ export default defineNuxtConfig({
       posthogHost: '',
     },
   },
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: true,
+    },
+    {
+      path: '~/components/Utils',
+      pathPrefix: false,
+    },
+  ],
 })

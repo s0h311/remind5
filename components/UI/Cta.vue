@@ -13,11 +13,13 @@
     ]"
     :type="type ? type : 'button'"
     @click="emits('handleClick')"
+    :autofocus="autoFocus"
   >
     <span
       v-if="isLoading"
       class="loading loading-spinner"
     />
+
     <p
       v-else
       class="flex items-center gap-1"
@@ -41,6 +43,7 @@ const props = defineProps<{
   small?: boolean
   type?: 'submit' | 'button'
   disabled?: boolean
+  autoFocus?: boolean
 }>()
 
 const emits = defineEmits<{

@@ -4,6 +4,7 @@
   <UIConfirmationDialog
     ref="confirmationDialog"
     title="Thank you for supporting us!"
+    text="You can now continue with Stripe."
     continue-button-text="Continue"
     @continue-click="initCheckout"
   />

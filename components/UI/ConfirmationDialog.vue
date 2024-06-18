@@ -5,10 +5,7 @@
   >
     <h2>{{ title }}</h2>
 
-    <p
-      v-if="text"
-      class="text-sm"
-    >
+    <p v-if="text">
       {{ text }}
     </p>
 
@@ -26,6 +23,7 @@
         :primary="!revert"
         :is-loading="isLoading"
         @handle-click="handleContinueClick"
+        auto-focus
       >
         {{ continueButtonText }}
       </UICta>

@@ -26,19 +26,16 @@
         <slot />
       </NuxtLink>
 
-      <a
+      <TrackedLink
         v-for="{ path, title } in links"
-        class="cursor-pointer"
         :key="'mobile-sidebar-link-' + path"
-        @click="
-          () => {
-            showSideMenu = false
-            trackAndNavigate(title, path)
-          }
-        "
+        component-name="Mobile Navbar"
+        :tracking-name="title"
+        :to="path"
+        @handle-click="showSideMenu = false"
       >
         {{ title }}
-      </a>
+      </TrackedLink>
 
       <div
         v-if="bottomBtns && bottomBtns.length > 0"
@@ -66,8 +63,4 @@ defineProps<{
 }>()
 
 const showSideMenu = ref<boolean>(false)
-
-const { trackAndNavigate } = useTracking('Mobile Navbar')
-
-const route = useRoute()
 </script>

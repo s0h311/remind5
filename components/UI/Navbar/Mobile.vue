@@ -23,12 +23,14 @@
           <IconX class="ml-auto" />
         </button>
 
-        <a
+        <TrackedLink
           v-if="additionalLinks && additionalLinks.length > 0"
           v-for="{ path, title, icon } in additionalLinks"
-          :key="'mobile-link-' + path"
           class="flex items-center gap-2"
-          @click="trackAndNavigate(title, path)"
+          :key="'mobile-link-' + path"
+          component-name="Mobile Navbar"
+          :tracking-name="title"
+          :to="path"
         >
           <component
             v-if="icon"
@@ -36,7 +38,7 @@
           />
 
           {{ title }}
-        </a>
+        </TrackedLink>
 
         <div v-if="additionalComponent">
           <component :is="additionalComponent" />
@@ -44,19 +46,17 @@
 
         <hr class="border-neutral" />
 
-        <a
+        <TrackedLink
           v-for="{ path, title } in links"
+          class="flex items-center gap-2"
           :key="'mobile-link-' + path"
-          class="cursor-pointer"
-          @click="
-            () => {
-              showSideMenu = false
-              trackAndNavigate(title, path)
-            }
-          "
+          component-name="Mobile Navbar"
+          :tracking-name="title"
+          :to="path"
+          @handle-click="showSideMenu = false"
         >
           {{ title }}
-        </a>
+        </TrackedLink>
       </div>
     </aside>
   </nav>
@@ -72,6 +72,4 @@ defineProps<{
 }>()
 
 const showSideMenu = ref<boolean>(false)
-
-const { trackAndNavigate } = useTracking('Mobile Navbar')
 </script>
