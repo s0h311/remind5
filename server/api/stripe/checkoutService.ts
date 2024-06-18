@@ -23,8 +23,15 @@ export default class StripeCheckoutService {
     lifetime: 'payment',
   }
 
-  private subscriptionDetails: Record<string, { isMetered: boolean; subscriptionType: Subscription['type'] }> = {
+  private subscriptionDetailsDev: Record<string, { isMetered: boolean; subscriptionType: Subscription['type'] }> = {
     price_1PSPTTKDXBGuYX0kpVOpSB6t: {
+      isMetered: false,
+      subscriptionType: 'supporter',
+    },
+  }
+
+  private subscriptionDetailsLive: Record<string, { isMetered: boolean; subscriptionType: Subscription['type'] }> = {
+    price_1PSvm4KDXBGuYX0kizRrtexV: {
       isMetered: false,
       subscriptionType: 'supporter',
     },
@@ -42,7 +49,11 @@ export default class StripeCheckoutService {
       allowPromotionCodes = false,
       additionalData,
     } = query.checkoutOptions
-    const { isMetered, subscriptionType } = this.subscriptionDetails[priceId]
+
+    const { isMetered, subscriptionType } =
+      process.env.NODE_ENV === 'developement'
+        ? this.subscriptionDetailsDev[priceId]
+        : this.subscriptionDetailsLive[priceId]
 
     const mode = this.modes[paymentPeriod]
 

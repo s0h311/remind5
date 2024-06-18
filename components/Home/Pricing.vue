@@ -32,7 +32,8 @@ const pricingOptions: (PricingOption & { priceId: string })[] = [
     benefits: ['Continual improvements', '24/7 Customer service', 'Best for all', 'Supporting the creator'],
     isPremium: true,
     description: `Thank you for your support.`,
-    priceId: 'price_1PSPTTKDXBGuYX0kpVOpSB6t',
+    priceId:
+      process.env.NODE_ENV === 'development' ? 'price_1PSPTTKDXBGuYX0kpVOpSB6t' : 'price_1PSvm4KDXBGuYX0kizRrtexV',
   },
 ]
 

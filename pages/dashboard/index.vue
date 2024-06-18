@@ -45,7 +45,8 @@ async function initCheckout(): Promise<void> {
   const stripeCheckoutUrl: string = await $fetch('/api/stripe/checkout', {
     method: 'post',
     body: {
-      priceId: 'price_1PSPTTKDXBGuYX0kpVOpSB6t',
+      priceId:
+        process.env.NODE_ENV === 'development' ? 'price_1PSPTTKDXBGuYX0kpVOpSB6t' : 'price_1PSvm4KDXBGuYX0kizRrtexV',
       paymentPeriod: 'lifetime',
       additionalData: {
         userId: user.value!.id,
