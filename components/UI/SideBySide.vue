@@ -22,10 +22,10 @@
       class="flex flex-col items-center gap-5 rounded-2xl border bg-gradient-to-br from-neutral-content to-gray-400 p-10 tablet:flex-row"
     >
       <NuxtImg
-        class="tablet:w-2/3 xl:w-full"
+        class="tablet:max-h-2/3 max-h-full object-contain xl:max-h-full"
         src="iphone-email.png"
-        height="400"
-        width="auto"
+        height="450"
+        width="220"
       />
 
       <p class="text-5xl text-neutral tablet:text-3xl xl:text-5xl">
