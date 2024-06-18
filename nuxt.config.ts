@@ -29,4 +29,10 @@ export default defineNuxtConfig({
       robots: false,
     },
   },
+  runtimeConfig: {
+    public: {
+      posthogPublicKey: '',
+      posthogHost: '',
+    },
+  },
 })
