@@ -2,7 +2,7 @@
   <div class="grid place-items-center gap-16 tablet:grid-cols-2 tablet:gap-20 desktop:px-[5%]">
     <div class="grid place-items-center gap-10 text-center">
       <h1
-        class="text-gradient from-neutral-content to-gray-400"
+        class="text-gradient from-neutral-content to-gray-400 leading-tight"
         v-html="title"
       />
 
