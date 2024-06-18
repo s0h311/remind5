@@ -24,8 +24,7 @@ const items = [
   },
   {
     title: 'Can I make feature requests?',
-    content:
-      'Yes. Your feedback is valuable. Just right us an email: support@reffect.org. We will get back on you ASAP',
+    content: 'Yes. Your feedback is valuable. Just write us an email: support@reffect.org. We will get work on it ASAP',
   },
   {
     title: 'Is Remind5 free?',

@@ -15,7 +15,7 @@ const pains = [
 
 const gains = [
   'Remember key passages better with regular emails.',
-  'Revisit important markings without searching',
+  'Revisit important markings without searching.',
   'Interact with book content consistently.',
   'Retain knowledge longer through daily exposure.',
 ]
