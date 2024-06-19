@@ -24,11 +24,12 @@ const items = [
   },
   {
     title: 'Can I make feature requests?',
-    content: 'Yes. Your feedback is valuable. Just write us an email: support@reffect.org. We will get work on it ASAP',
+    content:
+      'Yes. Your feedback is valuable. Just write us an email: support@reffect.org. We will start working on it ASAP',
   },
   {
     title: 'Is Remind5 free?',
-    content: 'Yes it is completely free :) You can become a supporter starting from $1 monthly.',
+    content: 'Yes it is completely free :) You can become a supporter starting from $1.',
   },
 ]
 </script>
