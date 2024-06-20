@@ -51,7 +51,7 @@ export default class StripeCheckoutService {
     } = query.checkoutOptions
 
     const { isMetered, subscriptionType } =
-      process.env.NODE_ENV === 'developement'
+      process.env.NODE_ENV === 'development'
         ? this.subscriptionDetailsDev[priceId]
         : this.subscriptionDetailsLive[priceId]
 
@@ -78,7 +78,7 @@ export default class StripeCheckoutService {
           paymentPeriod,
           subscriptionType,
         },
-        payment_method_types: ['paypal'],
+        payment_method_types: ['paypal', 'card'],
       }
 
       if (isAddressRequired) {
